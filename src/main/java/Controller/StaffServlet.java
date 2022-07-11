@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/qlnv")
@@ -62,7 +63,7 @@ public class StaffServlet extends HttpServlet {
         }
         int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("namenv");
-        Date birth = req.getParameter("birthday");
+        LocalDate ngaysinh= LocalDate.parse(req.getParameter("birthday"));
         String address=req.getParameter("address");
         String phoneNumber=req.getParameter("phone");
         String email=req.getParameter("Email");
@@ -71,11 +72,11 @@ public class StaffServlet extends HttpServlet {
         switch (action) {
 
             case "edit":
-                staffDao.editStaff(id,name, (java.sql.Date) birth,address,phoneNumber,email,idPhongban);
+                staffDao.editStaff(id,name, Date.valueOf(ngaysinh),address,phoneNumber,email,idPhongban);
                 break;
             case "add":
 
-                staffDao.addStaff(id,name, (java.sql.Date) birth,address,phoneNumber,email,idPhongban);
+                staffDao.addStaff(id,name, Date.valueOf(ngaysinh),address,phoneNumber,email,idPhongban);
                 break;
         }
     }}

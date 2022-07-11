@@ -6,13 +6,13 @@ import java.util.Date;
 public class Staff {
     private int IDStaff;
     private String nameStaff;
-    private Date birthday;
+    private LocalDate birthday;
     private String address;
     private  String phoneNumber;
     private String Email;
     private Department department;
 
-    public Staff(String nameStaff, Date birthday, String address, String phoneNumber, String email, Department department) {
+    public Staff(String nameStaff, LocalDate birthday, String address, String phoneNumber, String email, Department department) {
         this.nameStaff = nameStaff;
         this.birthday = birthday;
         this.address = address;
@@ -21,7 +21,7 @@ public class Staff {
         this.department = department;
     }
 
-    public Staff(int IDStaff, String nameStaff, Date birthday, String address, String phoneNumber, String email, Department department) {
+    public Staff(int IDStaff, String nameStaff, LocalDate birthday, String address, String phoneNumber, String email, Department department) {
         this.IDStaff = IDStaff;
         this.nameStaff = nameStaff;
         this.birthday = birthday;
@@ -47,11 +47,11 @@ public class Staff {
         this.nameStaff = nameStaff;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
