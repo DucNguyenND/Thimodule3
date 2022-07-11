@@ -1,7 +1,7 @@
 package Model;
 
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Staff {
     private int IDStaff;
@@ -29,6 +29,9 @@ public class Staff {
         this.phoneNumber = phoneNumber;
         Email = email;
         this.department = department;
+    }
+
+    public Staff(int idStaff, String nameStaff, Date brithday, String address, String phoneNumber, String email, Department department) {
     }
 
     public int getIDStaff() {

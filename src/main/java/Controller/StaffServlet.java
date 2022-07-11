@@ -27,25 +27,25 @@ public class StaffServlet extends HttpServlet {
         if (action==null){
             action="";
         }
-
+        int id;
         staff=staffDao.selectAll();
-        int id= Integer.parseInt(req.getParameter("id"));
+
         switch (action){
 
             case "edit":
-
+                 id= Integer.parseInt(req.getParameter("id"));
                 req.setAttribute("id",id);
                 requestDispatcher=req.getRequestDispatcher("/edit.jsp");
                 requestDispatcher.forward(req,resp);
                break;
             case "delete":
+                id= Integer.parseInt(req.getParameter("id"));
+
                 staffDao.delete(id);
                 break;
-            case "add":
+            case "create":
                 resp.sendRedirect("/add.jsp");
                 break;
-
-
             default:
                 req.setAttribute("staff",staff);
                 requestDispatcher=req.getRequestDispatcher("/qlnv.jsp");
@@ -77,6 +77,13 @@ public class StaffServlet extends HttpServlet {
             case "add":
 
                 staffDao.addStaff(id,name, Date.valueOf(ngaysinh),address,phoneNumber,email,idPhongban);
+                break;
+            case "search":
+                String nameID=req.getParameter("key");
+                staff=staffDao.serch(nameID);
+                req.setAttribute("staff",staff);
+                requestDispatcher=req.getRequestDispatcher("/qlnv.jsp");
+                requestDispatcher.forward(req,resp);
                 break;
         }
     }}
